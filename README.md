@@ -100,6 +100,7 @@ Set up a Firebase account and project for the Auth Service. You can create a pro
 5. Set up environment variables for Firebase, Cloudinary, and MongoDB.
 6. Start the backend server: `npm start`.
 7. Start the frontend application: `cd client && npm start`.
+8. if you want to start all at once : `npm run dev`
 
 ## API Documentation
 
