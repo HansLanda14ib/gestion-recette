@@ -5,7 +5,6 @@ const Home = ({}) => {
     return (
         <div>
             <h1>Welcome to the Recipe App!</h1>
-            {/* Add other content for the home page */}
         </div>
     );
 };

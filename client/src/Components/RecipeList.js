@@ -7,9 +7,7 @@ const RecipeList = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const token = window.localStorage.getItem('token');
     const [form] = Form.useForm();
-    const [formData, setFormData] = useState({});
     const [selectedFile, setSelectedFile] = useState(null);
-    const [imageUrl, setImageUrl] = useState('');
     const handleAddRecipe = () => {
         form.resetFields();
         setModalVisible(true);
@@ -65,7 +63,6 @@ const RecipeList = () => {
 
     const handleUpdate = async (recipe) => {
         try {
-            // Your logic for updating the recipe goes here
             const response = await axios.patch(
                 `http://localhost:5001/api/v1/recipes/${recipe._id}`,
                 recipe, // Pass updated recipe data
@@ -77,10 +74,10 @@ const RecipeList = () => {
             );
             console.log('Updated recipe:', response.data);
             message.success('Recipe updated successfully!');
-            // Handle success or update UI accordingly
+
         } catch (error) {
             console.error('Error updating recipe:', error);
-            // Handle error or show error message
+
         }
     };
 
@@ -128,7 +125,7 @@ const RecipeList = () => {
             render: ingredients => (
                 <ul>
                     {ingredients.map((ingredient, index) => (
-                        <li key={index}>{ingredient}</li>
+                        <li key={`${ingredient}-${index}`}>{ingredient}</li>
                     ))}
                 </ul>
             ),
@@ -159,8 +156,6 @@ const RecipeList = () => {
         <div>
 
             <Table dataSource={recipes} columns={columns}/>
-
-            {/* Modal for adding/editing a recipe */}
             <Modal
                 title="Add Recipe"
                 open={modalVisible}
@@ -197,13 +192,11 @@ const RecipeList = () => {
                         <InputNumber style={{width: '100%'}}/>
                     </Form.Item>
 
-                    {/* upload imag*/}
-
                     <input type="file" onChange={handleFileChange}/>
 
                 </Form>
-                {/* Add form or input fields for adding a recipe */}
             </Modal>
+
             <Button type="primary" onClick={handleAddRecipe} style={{marginBottom: '1rem'}}>
                 Add Recipe
             </Button>
