@@ -19,7 +19,6 @@ This section should list any major frameworks/libraries used to bootstrap your p
 - **User Authentication**: Firebase authentication for secure user management.
 - **Recipe Creation**: Allows users to create and upload recipes with details.
 - **Recipe Listing**: Displays a list of recipes with essential information.
-- **Recipe Details**: Provides detailed information about a selected recipe.
 - **Update and Delete**: Allows users to modify or delete their recipes.
 - **API Documentation**: Accessible via `/api-docs` endpoint.
 ## Architecture
@@ -38,11 +37,11 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 1. Clone the repository.
 ```bash
-git clone https://github.com/HansLanda14ib/hotels-booking-api.git
+git clone https://github.com/HansLanda14ib/gestion-recette.git
 ```
 **1. Node.js:** Make sure you have Node.js installed on your machine. You can download it from [here](https://nodejs.org/en/download/current).
 
-**2. MongoDB:** For running the MongoDB databases used by the Hotel Service and Booking Service, use MongoDB Cloud from here.
+**2. MongoDB:** For running the MongoDB databases use MongoDB Cloud from here.
 - Go to Atlas website [here](https://www.mongodb.com/cloud/atlas). and click on Try Free then create an account
 - Click on Build a Cluster then choose a provider and a region then click on Create Cluster
 - Click on Database Access from the left menu then click on Add new database user
@@ -50,8 +49,8 @@ git clone https://github.com/HansLanda14ib/hotels-booking-api.git
 - Click on Network Access from the left menu then click on Add IP Address
 - Click on Allow access from anywhere then click on Confirm
 - Click on Clusters from the left menu then click on Connect
-- Choose Connect your application then copy the connection string and paste it in the `.env` file variable named `MONGO_HOTEL_SERVICE` in the hotel directory
-- do the same for **the booking service** and paste the connection string in the `.env` file variable named `MONGO_BOOKING_SERVICE` in the booking directory
+- Choose Connect your application then copy the connection string and paste it in the `.env` file variable named `MONGO_URI`
+
 
 **3. Firebase Account:** 
 Set up a Firebase account and project for the Auth Service. You can create a project through the Firebase Console. 
@@ -91,8 +90,8 @@ Set up a Firebase account and project for the Auth Service. You can create a pro
     ##### **Configure firebase for backend-app setting:**
   - Click on the :gear: next to Project Overview then click on **Project settings**
   - Click on **Service accounts** then click on *Generate new private key*
-  - Copy the content of the downloaded file and paste in file named `service-account.json` in `hotel/firebase` directory
-  - Example of `hotel/firebase/service-account.json` file :
+  - Copy the content of the downloaded file and paste in file named `service-account.json` in `src/firebase` directory
+  - Example of `/firebase/service-account.json` file :
   
    ![service-account.json](https://github.com/HansLanda14ib/hotels-booking-api/assets/100965812/ae919115-87c9-4cb0-a98d-91dcd6f2806f)
 
