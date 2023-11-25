@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {authorizePermissions, decodeToken} = require('../middleware/authentication')
+const {decodeToken} = require('../middleware/authentication')
 
 const {
     createRecipe, updateRecipe, deleteRecipe, getRecipe, getAllRecipes, uploadImage
@@ -8,14 +8,14 @@ const {
 
 router
     .route('/')
-    .post([decodeToken, authorizePermissions('owner')], createRecipe)
-    .get([decodeToken, authorizePermissions('owner')], getAllRecipes)
+    .post(decodeToken, createRecipe)
+    .get(decodeToken, getAllRecipes)
 
 router
     .route('/:id')
-    .get([decodeToken, authorizePermissions('owner')], getRecipe)
-    .patch([decodeToken, authorizePermissions('owner')], updateRecipe)
-    .delete([decodeToken, authorizePermissions('owner')], deleteRecipe)
+    .get(decodeToken, getRecipe)
+    .patch(decodeToken, updateRecipe)
+    .delete(decodeToken, deleteRecipe)
 
 
 router
