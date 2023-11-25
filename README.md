@@ -104,12 +104,5 @@ Set up a Firebase account and project for the Auth Service. You can create a pro
 
 ## API Documentation
 
-Access the API documentation by visiting `/api-docs` on the running server.
+Access the API documentation by visiting `/api-docs` on the running server. Ex : http://localhost:5001/api-docs
 
-## Contributing
-
-Contributions are welcome! Feel free to open issues or pull requests for improvements or new features.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
