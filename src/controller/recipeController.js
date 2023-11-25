@@ -8,41 +8,41 @@ const path = require('path');
 const fs = require('fs');
 
 const getRecipe = async (req, res) => {
-    const recipe = await Recipe.findOne({_id: req.params.id})
+    const recipe = await Recipe.findOne({_id: req.params.id, user: req.user.userId})
     if (!recipe) throw new NotFoundError('recipe not found')
     res.status(StatusCodes.OK).json({success: true, message: 'get recipe successfully', recipe})
 }
 
 const createRecipe = async (req, res) => {
     const userId = req.user.userId
-   // console.log("from controller")
+    // console.log("from controller")
     //console.log(req.user.userId)
-try{
-    const result = await cloudinary.uploader.upload(
-        req.files.image.tempFilePath,
-        {
-            use_filename: true,
-            folder: 'file-uploads',
-        }
-    );
+    try {
+        const result = await cloudinary.uploader.upload(
+            req.files.image.tempFilePath,
+            {
+                use_filename: true,
+                folder: 'file-uploads',
+            }
+        );
 
-    fs.unlinkSync(req.files.image.tempFilePath);
+        fs.unlinkSync(req.files.image.tempFilePath);
 
-    const image = result.secure_url;
-    console.log(image)
-    const {name, ingredients, steps, prepTime} = req.body
+        const image = result.secure_url;
+        console.log(image)
+        const {name, ingredients, steps, prepTime} = req.body
 
-    const newRecipe = await Recipe.create({
-        name, ingredients, steps, prepTime, photo:image, user: userId,
-    });
-    res.status(StatusCodes.CREATED).json({success: true, message: 'Recipe created successfully', recipe: newRecipe});
-}catch (error) {
-    console.error('Error creating recipe:', error);
-}
-
-
-
-
+        const newRecipe = await Recipe.create({
+            name, ingredients, steps, prepTime, photo: image, user: userId,
+        });
+        res.status(StatusCodes.CREATED).json({
+            success: true,
+            message: 'Recipe created successfully',
+            recipe: newRecipe
+        });
+    } catch (error) {
+        console.error('Error creating recipe:', error);
+    }
 
 
 }
@@ -57,8 +57,9 @@ const updateRecipe = async (req, res) => {
 
 }
 const deleteRecipe = async (req, res) => {
-    const recipe = await Recipe.findOne({_id: req.params.id})
+    const recipe = await Recipe.findOne({_id: req.params.id, user: req.user.userId})
     if (!recipe) throw new NotFoundError('recipe not found')
+    checkPermissions(req.user, recipe.user)
     await recipe.remove()
     res.status(StatusCodes.OK).json({success: true, message: 'Recipe deleted successfully'})
 }

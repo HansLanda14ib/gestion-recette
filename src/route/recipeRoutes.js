@@ -13,7 +13,7 @@ router
 
 router
     .route('/:id')
-    .get(getRecipe)
+    .get([decodeToken, authorizePermissions('owner')], getRecipe)
     .patch([decodeToken, authorizePermissions('owner')], updateRecipe)
     .delete([decodeToken, authorizePermissions('owner')], deleteRecipe)
 
