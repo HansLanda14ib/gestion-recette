@@ -22,7 +22,8 @@ This section should list any major frameworks/libraries used to bootstrap your p
 - **Update and Delete**: Allows users to modify or delete their recipes.
 - **API Documentation**: Accessible via `/api-docs` endpoint.
 ## Architecture
-![Diagramme sans nom drawio](https://github.com/HansLanda14ib/gestion-recette/assets/100965812/eebc9a2d-863b-47ef-8c24-f1ea016d8224)
+
+![Diagramme sans nom drawio (1)](https://github.com/HansLanda14ib/gestion-recette/assets/100965812/9eb3ca5a-0e27-4ad8-8615-64e5a1130288)
 
 ## Getting Started
 
