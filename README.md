@@ -20,6 +20,8 @@ The Recipe Management Application is a web-based platform built to facilitate re
 - **Recipe Details**: Provides detailed information about a selected recipe.
 - **Update and Delete**: Allows users to modify or delete their recipes.
 - **API Documentation**: Accessible via `/api-docs` endpoint.
+## Architecture
+![Diagramme sans nom drawio](https://github.com/HansLanda14ib/gestion-recette/assets/100965812/eebc9a2d-863b-47ef-8c24-f1ea016d8224)
 
 ## Getting Started
 
